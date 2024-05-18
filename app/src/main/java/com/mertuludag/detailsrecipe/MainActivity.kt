@@ -62,8 +62,6 @@ fun RecipesDetail(recipe: Recipe) {
     }
 }
 
-
-
 @Composable
 fun ParallaxToolbar(recipe: Recipe, scrollState: LazyListState) {
     val imageHeight = 344.dp
@@ -149,7 +147,7 @@ fun Content(recipe: Recipe, scrollState: LazyListState) {
             Description(recipe)
             IngredientsHeader()
             IngredientsList(recipe)
-            StepsHeader(recipe)
+            Steps(recipe)
 
         }
 
@@ -204,7 +202,7 @@ fun IngredientsHeader() {
     }
 }
 @Composable
-fun StepsHeader(recipe: Recipe) {
+fun Steps(recipe: Recipe) {
 
    Column (modifier = Modifier.fillMaxHeight(),
        horizontalAlignment = Alignment.CenterHorizontally,
@@ -221,11 +219,12 @@ fun StepsHeader(recipe: Recipe) {
            .padding(16.dp),
            shape = RoundedCornerShape(10.dp),
            colors = CardDefaults.cardColors(
-               containerColor = Color.LightGray
+               containerColor = LightGray
            )
        ){
            Text(text = recipe.instructions,
-               textAlign = TextAlign.Start)
+               textAlign = TextAlign.Start,
+               modifier = Modifier.padding(5.dp))
        }
 
    }
@@ -274,13 +273,16 @@ fun IngredientCard(
             modifier = Modifier.width(100.dp),
             fontSize = 14.sp,
             fontWeight = FontWeight.Medium,
+            textAlign = TextAlign.Center
+
 
         )
         Text(
             text = subtitle,
             color = DarkGray,
             modifier = Modifier.width(100.dp),
-            fontSize = 14.sp
+            fontSize = 14.sp ,
+            textAlign = TextAlign.Center
         )
     }
 }
